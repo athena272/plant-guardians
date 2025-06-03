@@ -1,0 +1,85 @@
+@use '../../styles/abstract/variables' as *;
+
+
+.footerContainer {
+  background-color: #000000;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 40vh;
+}
+
+.footerContent {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.texts {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  width: 18%;
+  gap: 1rem;
+
+  p {
+    color: #bcbcbc;
+    font-size: 0.8rem;
+  }
+}
+
+.socialMedia {
+  color: #bcbcbc;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+
+  font-size: 0.8rem;
+}
+
+.icons {
+  display: flex;
+  gap: 2rem;
+  font-size: 3rem;
+}
+
+.baseboard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 2rem 0;
+  color: #bcbcbc;
+}
+
+@media (max-width: 768px) {
+  .footerContent {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .texts {
+    width: 100%;
+    align-items: center;
+    text-align: center;
+  }
+
+  .socialMedia {
+    width: 100%;
+    align-items: center;
+  }
+
+  .icons {
+    font-size: 2rem;
+  }
+
+  .baseboard {
+    font-size: 0.7rem;
+  }
+}

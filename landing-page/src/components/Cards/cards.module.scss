@@ -1,0 +1,53 @@
+@use '../../styles/abstract/variables' as *;
+
+.card {
+  background-color: $text-light;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 8px;
+  height: auto;
+  width: 100%;
+  max-width: 320px;
+  min-width: 220px;
+  margin: 0 auto;
+
+  img {
+    background-color: $bg-icons;
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    padding: 0.8rem;
+  }
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 15vh;
+
+  p {
+    font-weight: 300;
+    font-size: 0.8rem;
+    text-align: center;
+    width: 90%;
+  }
+}
+
+@media (max-width: 768px) {
+  .card {
+    height: 35vh;
+    width: 60vw;
+  }
+
+  .text {
+    height: 10vh;
+
+    p {
+      font-size: 0.7rem;
+    }
+  }
+}
