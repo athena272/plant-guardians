@@ -1,22 +1,10 @@
-import React from 'react';
 import { useQuery } from 'react-query';
-import axios from 'axios';
-
-interface Event {
-  timestamp: string;
-  image_url: string;
-  animal_detected: string;
-  action_taken: string;
-  confidence: number;
-}
+import { mockApi, Event } from '../mockApi';
 
 const Events = () => {
   const { data: events, isLoading } = useQuery<Event[]>(
     'events',
-    async () => {
-      const response = await axios.get('/api/events/latest');
-      return response.data;
-    }
+    async () => mockApi.getEvents()
   );
 
   return (
@@ -74,4 +62,4 @@ const Events = () => {
   );
 };
 
-export default Events; 
+export default Events;
