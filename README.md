@@ -9,6 +9,13 @@
 O Plant Guardians é uma solução que combina IoT, visão computacional e atuadores para proteger plantações de forma não-letal contra animais invasores. O sistema detecta automaticamente a presença de animais através de câmeras e sensores PIR, e ativa mecanismos de dissuasão como sons ultrassônicos, luzes estroboscópicas ou sprinklers.
 </p>
 
+<h2>🌐 Acesse Agora</h2>
+<p>
+Você pode visualizar a versão pública do projeto acessando:<br><br>
+<a href="https://plant-guardians.vercel.app/" target="_blank"><strong>🌱 https://plant-guardians.vercel.app/</strong></a>
+</p>
+<hr/>
+
 > Arquitetura em tempo real baseada em eventos, com escalabilidade nativa na nuvem.
 <pre>
 <code class="language-mermaid">
