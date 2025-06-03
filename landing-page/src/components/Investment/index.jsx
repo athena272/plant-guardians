@@ -26,5 +26,3 @@ export const Investment = () => {
     </section>
   );
 };
-
-export default Investment;
