@@ -1,4 +1,3 @@
-import React from 'react';
 import { useQuery } from 'react-query';
 import { Line } from 'react-chartjs-2';
 import {
@@ -11,7 +10,7 @@ import {
   Tooltip,
   Legend
 } from 'chart.js';
-import axios from 'axios';
+import { mockApi, DailyStats } from '../mockApi';
 
 // Registra componentes do Chart.js
 ChartJS.register(
@@ -24,20 +23,11 @@ ChartJS.register(
   Legend
 );
 
-interface DailyStats {
-  date: string;
-  total_detections: number;
-  animals_detected: Record<string, number>;
-}
-
 const Dashboard = () => {
   // Busca estatísticas diárias
   const { data: stats, isLoading } = useQuery<DailyStats[]>(
     'dailyStats',
-    async () => {
-      const response = await axios.get('/api/stats/daily');
-      return response.data;
-    }
+    async () => mockApi.getDailyStats()
   );
 
   // Prepara dados para o gráfico
@@ -72,10 +62,22 @@ const Dashboard = () => {
     stats?.flatMap(day => Object.keys(day.animals_detected)) || []
   ).size;
 
+  // Agregação para animais mais frequentes
+  const animalDetections: Record<string, number> = {};
+  stats?.forEach(day => {
+    Object.entries(day.animals_detected).forEach(([animal, count]) => {
+      animalDetections[animal] = (animalDetections[animal] || 0) + count;
+    });
+  });
+
+  const sortedAnimals = Object.entries(animalDetections)
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 5);
+
   return (
     <div className="space-y-6">
       <h1 className="text-3xl font-bold text-gray-900">Dashboard</h1>
-      
+
       {/* Cards de resumo */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <div className="bg-white p-6 rounded-lg shadow">
@@ -84,14 +86,14 @@ const Dashboard = () => {
             {isLoading ? '...' : totalDetections}
           </p>
         </div>
-        
+
         <div className="bg-white p-6 rounded-lg shadow">
           <h3 className="text-lg font-medium text-gray-900">Espécies Detectadas</h3>
           <p className="mt-2 text-3xl font-bold text-indigo-600">
             {isLoading ? '...' : uniqueAnimals}
           </p>
         </div>
-        
+
         <div className="bg-white p-6 rounded-lg shadow">
           <h3 className="text-lg font-medium text-gray-900">Taxa de Sucesso</h3>
           <p className="mt-2 text-3xl font-bold text-indigo-600">
@@ -128,18 +130,16 @@ const Dashboard = () => {
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
-              {stats?.map(day => 
-                Object.entries(day.animals_detected).map(([animal, count]) => (
-                  <tr key={animal}>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                      {animal}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                      {count}
-                    </td>
-                  </tr>
-                ))
-              )}
+              {sortedAnimals.map(([animal, count]) => (
+                <tr key={animal}>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                    {animal}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    {count}
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
@@ -148,4 +148,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard; 
+export default Dashboard;

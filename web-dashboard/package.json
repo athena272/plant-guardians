@@ -12,8 +12,10 @@
   "dependencies": {
     "@headlessui/react": "^1.7.18",
     "@heroicons/react": "^2.1.1",
+    "@tailwindcss/forms": "^0.5.10",
     "axios": "^1.6.7",
     "chart.js": "^4.4.1",
+    "date-fns": "^4.1.0",
     "firebase": "^10.8.0",
     "react": "^18.2.0",
     "react-chartjs-2": "^5.2.0",
@@ -36,4 +38,4 @@
     "typescript": "^5.2.2",
     "vite": "^5.1.0"
   }
-} 
+}

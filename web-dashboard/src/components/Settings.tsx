@@ -1,13 +1,6 @@
 import React, { useState } from 'react';
 import { useQuery, useMutation, useQueryClient } from 'react-query';
-import axios from 'axios';
-
-interface TargetSpecies {
-  name: string;
-  enabled: boolean;
-  deterrent_intensity: number;
-  deterrent_duration: number;
-}
+import { mockApi, TargetSpecies } from '../mockApi';
 
 const Settings = () => {
   const queryClient = useQueryClient();
@@ -16,20 +9,13 @@ const Settings = () => {
   // Busca espécies alvo
   const { data: species, isLoading } = useQuery<TargetSpecies[]>(
     'targetSpecies',
-    async () => {
-      const response = await axios.get('/api/settings/species');
-      return response.data;
-    }
+    async () => mockApi.getSpecies()
   );
 
   // Mutação para atualizar espécie
   const updateSpecies = useMutation(
     async (updatedSpecies: TargetSpecies) => {
-      const response = await axios.put(
-        `/api/settings/species/${updatedSpecies.name}`,
-        updatedSpecies
-      );
-      return response.data;
+      await mockApi.updateSpecies(updatedSpecies);
     },
     {
       onSuccess: () => {
@@ -41,13 +27,7 @@ const Settings = () => {
   // Mutação para adicionar espécie
   const addSpecies = useMutation(
     async (name: string) => {
-      const response = await axios.post('/api/settings/species', {
-        name,
-        enabled: true,
-        deterrent_intensity: 50,
-        deterrent_duration: 5,
-      });
-      return response.data;
+      await mockApi.addSpecies(name);
     },
     {
       onSuccess: () => {
@@ -176,4 +156,4 @@ const Settings = () => {
   );
 };
 
-export default Settings; 
+export default Settings;
