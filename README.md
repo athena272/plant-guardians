@@ -1,4 +1,5 @@
 <h1>🌱 Plant Guardians</h1>
+🚫 Não-letal. 🌎 Sustentável. 🧠 Inteligente.
 
 <p>Sistema inteligente de proteção de plantações contra invasores animais usando Google Cloud e IoT.</p>
 
@@ -8,6 +9,7 @@
 O Plant Guardians é uma solução que combina IoT, visão computacional e atuadores para proteger plantações de forma não-letal contra animais invasores. O sistema detecta automaticamente a presença de animais através de câmeras e sensores PIR, e ativa mecanismos de dissuasão como sons ultrassônicos, luzes estroboscópicas ou sprinklers.
 </p>
 
+> Arquitetura em tempo real baseada em eventos, com escalabilidade nativa na nuvem.
 <pre>
 <code class="language-mermaid">
 graph TD
@@ -94,11 +96,15 @@ firebase deploy</code></pre>
 </ul>
 
 <h2>🧪 Modo Demo com Dados Mockados</h2>
-<p>
-Agora o dashboard web pode ser executado em modo demonstração, utilizando apenas dados mockados. Isso permite testar e apresentar todas as funcionalidades do frontend sem necessidade de backend ou autenticação. Basta rodar o frontend normalmente com <code>npm run dev</code> na pasta <code>web-dashboard</code> e navegar pelas telas, que exibirão dados simulados.
-</p>
+É possível testar todo o dashboard sem backend nem autenticação. Execute:
 
-<hr>
+```sh
+npm run dev
+```
+
+Simulações de eventos, gráficos e notificações push funcionarão com dados mockados.
+
+---
 
 <h2>🖥️ Landing Page</h2>
 <p>
