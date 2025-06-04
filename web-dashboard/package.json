@@ -22,6 +22,7 @@
     "react-router-dom": "^6.22.0"
   },
   "devDependencies": {
+    "@tailwindcss/forms": "^0.5.10",
     "@types/react": "^18.2.55",
     "@types/react-dom": "^18.2.19",
     "@typescript-eslint/eslint-plugin": "^6.21.0",
@@ -36,4 +37,4 @@
     "typescript": "^5.2.2",
     "vite": "^5.1.0"
   }
-} 
+}
