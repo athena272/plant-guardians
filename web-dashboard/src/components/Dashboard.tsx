@@ -10,7 +10,10 @@ import {
   Tooltip,
   Legend
 } from 'chart.js';
-import { mockApi, DailyStats } from '../mockApi';
+import { mockApi, DailyStats, Event } from '../mockApi';
+import DetectionAlert from './DetectionAlert'
+import DetectionPopup from './DetectionPopup'
+import { useState, useEffect } from 'react';
 
 // Registra componentes do Chart.js
 ChartJS.register(
@@ -23,12 +26,64 @@ ChartJS.register(
   Legend
 );
 
+type AlertType = 'danger' | 'success' | 'info' | undefined;
+
 const Dashboard = () => {
   // Busca estatísticas diárias
   const { data: stats, isLoading } = useQuery<DailyStats[]>(
     'dailyStats',
     async () => mockApi.getDailyStats()
   );
+
+  const [alertEvent, setAlertEvent] = useState<Event | null>(null)
+  const [alertType, setAlertType] = useState<AlertType>(undefined)
+  const [popupEvent, setPopupEvent] = useState<Event | null>(null)
+
+  // Simula chegada de novo evento
+  useEffect(() => {
+    mockApi.getEvents().then(events => {
+      const randomEvent = events[Math.floor(Math.random() * events.length)]
+      setAlertEvent({ ...randomEvent, action_taken: '' })
+      setAlertType('danger')
+      setTimeout(() => {
+        setAlertEvent(null)
+        setAlertType(undefined)
+        setPopupEvent({ ...randomEvent, action_taken: '' })
+      }, 3000)
+    })
+  }, [])
+
+  const handleRepel = () => {
+    if (popupEvent) {
+      const updatedEvent = {
+        ...popupEvent,
+        action_taken: 'Espanto bem-sucedido'
+      }
+      setPopupEvent(null)
+      setAlertEvent(updatedEvent)
+      setAlertType('success')
+      setTimeout(() => {
+        setAlertEvent(null)
+        setAlertType(undefined)
+      }, 4000)
+    }
+  }
+
+  const handleDismiss = () => {
+    if (popupEvent) {
+      const updatedEvent = {
+        ...popupEvent,
+        action_taken: 'Nenhuma ação tomada'
+      }
+      setPopupEvent(null)
+      setAlertEvent(updatedEvent)
+      setAlertType('info')
+      setTimeout(() => {
+        setAlertEvent(null)
+        setAlertType(undefined)
+      }, 4000)
+    }
+  }
 
   // Prepara dados para o gráfico
   const chartData = {
@@ -76,6 +131,8 @@ const Dashboard = () => {
 
   return (
     <div className="space-y-6">
+      <DetectionAlert event={alertEvent} type={alertType} onClose={() => setAlertEvent(null)} />
+      <DetectionPopup event={popupEvent} onDismiss={handleDismiss} onRepel={handleRepel} />
       <h1 className="text-3xl font-bold text-gray-900">Dashboard</h1>
 
       {/* Cards de resumo */}

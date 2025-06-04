@@ -26,21 +26,21 @@ export interface TargetSpecies {
 const mockEvents: Event[] = [
   {
     timestamp: new Date().toISOString(),
-    image_url: 'https://via.placeholder.com/640x480.png?text=Javali+Detectado',
+    image_url: 'https://www.portaltanosite.com/images/noticias/867/077b4fef3ff3d208a762d599bed4e849.jpg',
     animal_detected: 'Javali',
     action_taken: 'Som ultrassônico ativado',
     confidence: 0.92
   },
   {
     timestamp: new Date(Date.now() - 3600000).toISOString(),
-    image_url: 'https://via.placeholder.com/640x480.png?text=Coelho+Detectado',
+    image_url: 'https://s2-g1.glbimg.com/WES-0W5ffhbF4hid8jwQnLIehgk=/1200x0/filters:format(jpeg)/https://i.s3.glbimg.com/v1/AUTH_59edd422c0c84a879bd37670ae4f538a/internal_photos/bs/2020/o/k/VI1n6bSZ6TaaWXuZQzVA/foto-1.png',
     animal_detected: 'Coelho',
     action_taken: 'Luz estroboscópica ativada',
     confidence: 0.85
   },
   {
     timestamp: new Date(Date.now() - 7200000).toISOString(),
-    image_url: 'https://via.placeholder.com/640x480.png?text=Cervo+Detectado',
+    image_url: 'https://oeco.org.br/wp-content/uploads/oeco-migration/images/stories/jul2014/FOTO-4.jpg',
     animal_detected: 'Cervo',
     action_taken: 'Sprinkler ativado',
     confidence: 0.78
