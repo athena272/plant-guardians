@@ -61,10 +61,9 @@ const ContactForm = () => {
     return nameValid && emailValid && phoneValid && messageValid;
   };
 
-
   return (
-    <section className={s.formContainer} id='form-contact'>
-      <form onSubmit={handleSubmit}>
+    <main className={s.formContainer} id='form-contact'>
+      <form onSubmit={handleSubmit} className={s.form}>
         <input
           type="text"
           name="_gotcha"
@@ -73,7 +72,7 @@ const ContactForm = () => {
           autoComplete="off"
         />
 
-        <div>
+        <div className={s.formHeader}>
           <h2>Solicite uma Demonstração</h2>
           <p>Veja o Plant Guardians em ação e descubra como ele pode proteger sua plantação. Preencha o formulário e entraremos em contato.</p>
 
@@ -143,19 +142,18 @@ const ContactForm = () => {
             rows="5"
             required
             placeholder="Como podemos ajudar?"
+            style={{ minHeight: '100px', maxHeight: '300px' }}
           ></textarea>
         </div>
 
         <button type="submit" disabled={isSubmitting || !isFormValid()}>
           {isSubmitting ? 'Enviando...' : 'Solicitar Demonstração'}
         </button>
-
       </form>
-
       <div className={s.imageContainer}>
         <img src={bgImage} alt="fotografia de plantação" />
       </div>
-    </section>
+    </main>
   );
 };
 
