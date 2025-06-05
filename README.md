@@ -14,6 +14,49 @@ O Plant Guardians é uma solução que combina IoT, visão computacional e atuad
 - 🟢 **Aplicação Web Interativa (Mock)**  
   [https://plantguardiansystem.netlify.app](https://plantguardiansystem.netlify.app)
 
+## 🧪 Aplicação Interativa (Mock)
+
+Uma versão interativa da aplicação foi publicada em:  
+🔗 [https://plantguardiansystem.netlify.app](https://plantguardiansystem.netlify.app)  
+Essa versão **não está conectada ao backend nem à infraestrutura na nuvem**, seu objetivo é simular o comportamento da solução final de forma visual e navegável para apresentações e testes de usabilidade.
+
+### Como funciona?
+
+Ao acessar a **Dashboard**, será exibido automaticamente um **popup de alerta** simulando a detecção de um animal (por exemplo, **javali**, **coelho** ou **cervo**). Este comportamento se repete **toda vez que a página inicial (Dashboard) for carregada ou recarregada**.
+
+### Pop-up de Alerta
+
+Cada popup inclui:
+- 📸 **Imagem** do animal detectado.
+- 📊 **Confiança** na detecção (ex: 85%).
+- 💡 **Ação sugerida** (ex: “Espantar animal?”).
+- ✅ **Botão "Espantar"**: simula o acionamento de um dissuasor (como luz ou som). Uma notificação verde será exibida no canto superior direito confirmando o sucesso da ação.
+- ❌ **Botão "Ignorar"**: nenhuma ação é tomada, e uma notificação azul aparece indicando que a ameaça foi ignorada.
+
+---
+
+### Outras Telas da Aplicação
+
+- 📈 **Dashboard**  
+  Exibe os totais de detecções, taxa de sucesso e gráficos com a tendência de detecções por dia.  
+  > ⚠️ O pop-up de detecção será disparado automaticamente sempre que esta tela for acessada.
+
+- 📂 **Eventos**  
+  Lista todos os eventos de detecção registrados na sessão de uso, com:
+  - Imagem do animal
+  - Nome da espécie
+  - Ação tomada (ex: “Sprinkler ativado”, “Luz estroboscópica”, etc.)
+  - Confiança da detecção e horário
+
+- ⚙️ **Configurações**  
+  Permite adicionar novas **espécies-alvo** e configurar, de forma simulada:
+  - Intensidade do dissuasor (slider)
+  - Duração da ação (em segundos)
+
+---
+
+> ✅ Essa versão é ideal para demonstrações, validação com usuários e apresentação do fluxo completo da solução — mesmo sem backend real.
+
 ## 🎨 Protótipo Figma
 
 Acesse o protótipo visual do Plant Guardians no Figma:  
