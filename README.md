@@ -55,7 +55,7 @@ Cada popup inclui:
 
 ---
 
-> ✅ Essa versão é ideal para demonstrações, validação com usuários e apresentação do fluxo completo da solução — mesmo sem backend real.
+> ✅ Essa versão é ideal para demonstrações, validação com usuários e apresentação do fluxo completo da solução, mesmo sem backend real.
 
 ## 🎨 Protótipo Figma
 
